@@ -1,8 +1,8 @@
-import React from "react";
+import React from "react"
 
-function Search({ searchTerm, onChangeSearch }) {
-  function handleChange(event) {
-    onChangeSearch(event.target.value);
+function Search ({ searchTerm, onChangeSearch }) {
+  function handleChange (event) {
+    onChangeSearch(event.target.value)
   }
 
   return (
@@ -12,7 +12,7 @@ function Search({ searchTerm, onChangeSearch }) {
         <i className="search icon" />
       </div>
     </div>
-  );
+  )
 }
 
-export default Search;
+export default Search

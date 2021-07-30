@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { Card } from "semantic-ui-react";
+import React, { useState } from "react"
+import { Card } from "semantic-ui-react"
 
-function PokemonCard({ pokemon }) {
-  const [showFront, setShowFront] = useState(true);
+function PokemonCard ({ pokemon }) {
+  const [showFront, setShowFront] = useState(true)
 
-  const { name, hp, sprites } = pokemon;
+  const { name, hp, sprites } = pokemon
 
-  function handleClick() {
-    setShowFront((showFront) => !showFront);
+  function handleClick () {
+    setShowFront((showFront) => !showFront)
   }
 
   return (
@@ -27,7 +27,7 @@ function PokemonCard({ pokemon }) {
         </div>
       </div>
     </Card>
-  );
+  )
 }
 
-export default PokemonCard;
+export default PokemonCard

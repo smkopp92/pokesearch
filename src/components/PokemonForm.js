@@ -1,22 +1,22 @@
-import React, { useState } from "react";
-import { Form } from "semantic-ui-react";
+import React, { useState } from "react"
+import { Form } from "semantic-ui-react"
 
-function PokemonForm({ onAddPokemon }) {
+function PokemonForm ({ onAddPokemon }) {
   const [formData, setFormData] = useState({
     name: "",
     hp: "",
     frontUrl: "",
-    backUrl: "",
-  });
+    backUrl: ""
+  })
 
-  function handleChange(event) {
+  function handleChange (event) {
     setFormData({
       ...formData,
-      [event.target.name]: event.target.value,
-    });
+      [event.target.name]: event.target.value
+    })
   }
 
-  function handleSubmit() {
+  function handleSubmit () {
     // Semantic UI React's Form component handles the preventDefault automatically!
 
     const newPokemon = {
@@ -24,19 +24,19 @@ function PokemonForm({ onAddPokemon }) {
       hp: formData.hp,
       sprites: {
         front: formData.frontUrl,
-        back: formData.backUrl,
-      },
-    };
+        back: formData.backUrl
+      }
+    }
 
-    fetch("http://localhost:3001/pokemon", {
+    fetch(`${process.env.REACT_APP_API_URL}/pokemon`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify(newPokemon),
+      body: JSON.stringify(newPokemon)
     })
       .then((r) => r.json())
-      .then(onAddPokemon);
+      .then(onAddPokemon)
   }
 
   return (
@@ -80,7 +80,7 @@ function PokemonForm({ onAddPokemon }) {
         <Form.Button>Submit</Form.Button>
       </Form>
     </div>
-  );
+  )
 }
 
-export default PokemonForm;
+export default PokemonForm

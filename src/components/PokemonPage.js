@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from "react";
-import PokemonCollection from "./PokemonCollection";
-import PokemonForm from "./PokemonForm";
-import Search from "./Search";
-import { Container } from "semantic-ui-react";
+import React, { useEffect, useState } from "react"
+import PokemonCollection from "./PokemonCollection"
+import PokemonForm from "./PokemonForm"
+import Search from "./Search"
+import { Container } from "semantic-ui-react"
 
-function PokemonPage() {
-  const [pokemon, setPokemon] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+function PokemonPage () {
+  const [pokemon, setPokemon] = useState([])
+  const [searchTerm, setSearchTerm] = useState("")
 
   useEffect(() => {
-    fetch("http://localhost:3001/pokemon")
+    fetch(`${process.env.REACT_APP_API_URL}/pokemon`)
       .then((r) => r.json())
-      .then(setPokemon);
-  }, []);
+      .then(setPokemon)
+  }, [])
 
-  function handleAddPokemon(newPokemon) {
-    setPokemon([...pokemon, newPokemon]);
+  function handleAddPokemon (newPokemon) {
+    setPokemon([...pokemon, newPokemon])
   }
 
   const pokemonsToDisplay = pokemon.filter((poke) =>
     poke.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  )
 
   return (
     <Container>
@@ -32,7 +32,7 @@ function PokemonPage() {
       <br />
       <PokemonCollection pokemon={pokemonsToDisplay} />
     </Container>
-  );
+  )
 }
 
-export default PokemonPage;
+export default PokemonPage
